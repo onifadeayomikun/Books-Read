@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Book</title>
+</head>
+<body>
+    <div class="container1">
+        <div class="new">
+            <h1>Onifade Ayomikun</h1>
+            <a class="newLink" href="/new">New Book</a>
+        </div>
+        <h2>Books I have read</h2>
+        <p>I just started reading books so this might be short. I will update regularly. Books below</p>
+    </div>
+
+    <div class="container2">
+        <% books.forEach(book=> { %>
+            <li>
+                <div class="coverandTitle">
+                <img class="cover" src=" <%= book.coverpage %> " alt="cover_page_<%= book.title %>"> <br>
+                <h2> <%= book.title %> </h2>
+                </div> 
+                <small>Date Read: <%= new Date(book.dates).toLocaleString() %> </small>
+                <p> <%= book.content %> </p>
+                <p><strong>Type:</strong> <a href="/books/<%= book.category %>"> <%= book.category %> </a> </p>
+                <p>Rating: <%= book.ratings %> </p>
+                <h3>Author: <%= book.author %> </h3> 
+                <a class="edit edit-delete" href="/post/<%= book.id %>">Edit</a>
+                <a class="delete edit-delete" href="/post/<%= book.id %>">Delete</a>
+            </li>
+        <% }); %>
+    </div>
+</body>
+</html>   

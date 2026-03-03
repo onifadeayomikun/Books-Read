@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title><%= heading %></title>
+</head>
+<body>
+    <div>
+        <h1>
+            <%= heading %>
+        </h1>
+    </div>
+    <% if (!locals.book) { %>
+            <form id="newPostForm" method="post" action="/new">
+            <input type="text" name="title" placeholder="Title" required> <br><br>
+            <textarea name="content" placeholder="Content" required rows="10"></textarea> <br><br>
+            <input type="text" name="author" placeholder="Author" required> <br><br>
+            <input type="text" name="category" placeholder="Category" required> <br><br>
+            <input type="text" name="ratings" placeholder="Ratings" required> <br><br>
+            <input type="text" name="coverpage" placeholder="Coverpage" required> <br><br><br>
+            <button class="full-width" type="submit">
+                <%= submit %>
+            </button>
+            </form>
+
+        <% } else { %>
+        <form id="editForm" action="/post/<%= book.id %>" method="post">
+            <input type="text" name="title" value="<%= book.title %>"> <br><br>
+            <textarea name="content" rows="10"><%=book.content %></textarea> <br><br>
+            <input type="text" name="author" value="<%=book.author %>"> <br><br>
+            <input type="text" name="category" value="<%=book.category %>"> <br><br>
+            <input type="text" name="ratings" value="<%=book.ratings %>"> <br><br>
+            <input type="text" name="coverpage" value="<%=book.coverpage %>">  <br><br>
+            <button class="full-width" type="submit">
+                <%= submit %>
+        </button>
+        </form>
+        <% } %>
+         
+</body>
+</html>
